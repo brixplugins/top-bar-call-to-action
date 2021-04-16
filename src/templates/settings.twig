@@ -1,0 +1,464 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Top Bar Call To Action plugin for Craft CMS 3.x
+ *
+ * Top Bar Call To Action Settings.twig
+ *
+ * @author    BRIX Plugins
+ * @copyright Copyright (c) 2021 BRIX Plugins
+ * @link      https://brixplugins.com/
+ * @package   TopBarCallToAction
+ * @since     1.0.0
+ */
+#}
+
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("brixplugins\\topbarcalltoaction\\assetbundles\\settingspage\\SettingsPageAsset") %}
+{% do view.registerAssetBundle("brixplugins\\topbarcalltoaction\\assetbundles\\topbar\\TopBarAsset") %}
+
+{% css %}
+
+    .top-bar {
+        background-color: {{ settings['colorBar'] }};
+        color: {{ settings['colorTextBar'] }};
+    }
+    .top-bar a {
+        background-color: {{ settings['colorButton'] }};
+        color: {{ settings['colorTextButton'] }};
+    }
+
+    {% if settings['enableCustomCSS'] %}
+        {{ settings['txtAreaCustomCSS'] }}
+    {% endif %}
+
+{% endcss %}
+
+{% set logo = view.getAssetManager().getPublishedUrl('@brixplugins/topbarcalltoaction/assetbundles/settingspage/dist', true) ~ '/img/logo.svg' %}
+{% set mail_icon = view.getAssetManager().getPublishedUrl('@brixplugins/topbarcalltoaction/assetbundles/settingspage/dist', true) ~ '/img/mail-icon.svg' %}
+{% set typeBarImg1 = view.getAssetManager().getPublishedUrl('@brixplugins/topbarcalltoaction/assetbundles/settingspage/dist', true) ~ '/img/type-bar-1.svg' %}
+{% set typeBarImg2 = view.getAssetManager().getPublishedUrl('@brixplugins/topbarcalltoaction/assetbundles/settingspage/dist', true) ~ '/img/type-bar-2.svg' %}
+{% set typeBarImg3 = view.getAssetManager().getPublishedUrl('@brixplugins/topbarcalltoaction/assetbundles/settingspage/dist', true) ~ '/img/type-bar-3.svg' %}
+
+{% set tabs = {
+    general: { label: 'General', url: '#general' },
+    styling: { label: 'Styling', url: '#styling' },
+    sites: { label: 'Sites', url: '#sites' },
+    advanced: { label: 'Advanced', url: '#advanced' },
+    preview: { label: 'Preview', url: '#preview' }
+} %}
+
+{# Link for the ? icon at the bottom of the page #}
+{% set docsUrl = "https://brixplugins.com/plugins/top-bar-call-to-action" %}
+
+{# The title of this CP section #}
+{% set title = "Top Bar Call To Action" %}
+
+{# The URL to this plugin's base CP section #}
+{% set pluginCpUrl = url('top-bar-call-to-action') %}
+
+{% set optType1 = false %}
+{% set optType2 = false %}
+{% set optType3 = false %}
+
+{% if settings['barType'] == 'bar-type-1' %}
+    {% set optType1 = true %}
+{% elseif settings['barType'] == 'bar-type-2' %}
+    {% set optType2 = true %}
+{% elseif settings['barType'] == 'bar-type-3' %}
+    {% set optType3 = true %}
+{% endif %}
+
+{% set activePages = settings['txtActivePages'] | split(',') %}
+
+
+{# ------------------------------------------ Details --------------------------------------- #}
+
+{% set details %}
+
+    <div class="content-pane newsletter-pane text-center">
+    
+        <img src="{{ mail_icon }}" width="140.4" />
+
+        <h1 class="newsletter-title">
+            Want to stay updated 
+            about new Great plugins?
+        </h1>
+
+        <p class="developer-description">
+            Subscribe to our newsletter today!
+        </p>
+
+        <div id="mc_embed_signup">
+            <form action="https://brixplugins.us1.list-manage.com/subscribe/post?u=1a294d91a09badfa01199d560&amp;id=63e5239b4a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">                    
+                    <div class="mc-field-group">
+                        <input type="email" value="" name="EMAIL" class="required email text fullwidth" id="mce-EMAIL" placeholder="example@email.com">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_1a294d91a09badfa01199d560_63e5239b4a" tabindex="-1" value="">
+                    </div>
+                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn submit">Subscribe</button>
+               
+                </div>
+            </form>
+        </div>
+    
+    </div>
+
+    <div class="content-pane developer-content-pane text-center mt-2">
+        <h2>
+            A plugin by
+        </h2>
+        <a href="https://brixplugins.com">
+            <img class="brix-logo-developer" src="{{ logo }}" width="200" />
+        </a>
+        <p class="developer-description">
+            The best CraftCMS Tips,
+            Tutorials, Resources and more!
+        </p>
+    </div>
+
+{% endset %}
+
+{# -------------------------------------- /Details ----------------------------------- #}
+
+
+{# -------------------------------------- Content ----------------------------------- #}
+
+{% set content %}
+
+    <form id="main-form" method="post" accept-charset="UTF-8" novalidate="" data-saveshortcut="" data-confirm-unload="">
+
+        {{- csrfInput() }}
+
+        {{ forms.hidden({
+            name: 'action',
+            value: 'plugins/save-plugin-settings'})
+        }}
+        
+        {{ forms.hidden({
+            name: 'pluginHandle',
+            value: 'top-bar-call-to-action'})
+        }}        
+
+        <div class="top-bar__enable-toggle">
+            {{ 
+                forms.lightswitchField({
+                offLabel: 'Activate / Deactivate Top Bar'|t('top-bar-call-to-action'),
+                id: 'settings[enableTopBarCTA]',
+                name: 'settings[enableTopBarCTA]',
+                on: settings['enableTopBarCTA'] })
+            }}
+        </div>
+  
+        <br>
+
+        {% if not settings['enableTopBarCTA'] %}
+            <p class="warning with-icon">The plugin is currently disabled.</p>
+        {% endif %}
+
+        <div id="general">       
+                
+            <div class="field">
+
+                <div class="heading" >
+                    <label class="heading-bar-type">
+                        Choose the layout for your Top Bar
+                    </label>
+                </div> 
+
+                <div class="elements-button-type__items">
+
+                    <div class="elements-button-type__item">
+                        <label for="bar-type-1">
+                            <img class="mr-3" src="{{ typeBarImg1 }}" />   
+                        </label>    
+                        <br/>
+                        {{ forms.radio({
+                            label: 'Only text'|t('top-bar-call-to-action'),
+                            class: 'radio__control',
+                            id: 'bar-type-1',
+                            name: 'settings[barType]',
+                            value: 'bar-type-1',
+                            checked: optType1
+                        }) }}                
+                    </div>
+
+                    <div class="elements-button-type__item">
+                        <label for="bar-type-2">
+                            <img class="mr-3" src="{{ typeBarImg2 }}" />
+                        </label>
+                        <br/>
+                        {{ forms.radio({
+                            label: 'Button left aligned'|t('top-bar-call-to-action'),
+                            id: 'bar-type-2',
+                            name: 'settings[barType]',
+                            value: 'bar-type-2',
+                            checked: optType2
+                        }) }}
+                    </div>
+
+                    <div class="elements-button-type__item">
+                        <label for="bar-type-3">
+                            <img src="{{ typeBarImg3 }}" />
+                        </label>
+                        <br/>
+                        {{ forms.radio({
+                            label: 'Button below text'|t('top-bar-call-to-action'),
+                            id: 'bar-type-3',
+                            name: 'settings[barType]',
+                            value: 'bar-type-3',
+                            checked: optType3
+                        }) }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{ forms.textField({
+                label: 'Top bar text'|t('top-bar-call-to-action'),
+                instructions: '30 - 40 characters recommended'|t('top-bar-call-to-action'),
+                id: 'settings[txtBar]',
+                name: 'settings[txtBar]',
+                maxlength: 100,
+                placeholder: 'Get 20% OFF Today on our Products!'|t('top-bar-call-to-action'),
+                value: settings['txtBar']})
+            }}
+
+            {{ forms.textField({
+                label: 'Button text'|t('top-bar-call-to-action'),
+                instructions: '10 - 15 characters recommended'|t('top-bar-call-to-action'),
+                id: 'settings[txtBtn]',
+                maxlength: 50,
+                name: 'settings[txtBtn]',
+                placeholder: 'Buy Now!'|t('top-bar-call-to-action'),
+                value: settings['txtBtn']})
+            }}
+
+            {{ forms.textField({
+                label: 'Button link'|t('top-bar-call-to-action'),
+                instructions: 'Example: https://yourlink.com'|t('top-bar-call-to-action'),
+                id: 'settings[txtBtnLink]',
+                name: 'settings[txtBtnLink]',
+                placeholder: 'https://brixplugins.com'|t('top-bar-call-to-action'),
+                value: settings['txtBtnLink']})
+            }}
+            
+        </div>
+
+        <div id="styling" class="hidden">
+
+            {{ forms.colorField({
+                label: 'Background color'|t('top-bar-call-to-action'),
+                name: 'settings[colorBar]',
+                value: settings['colorBar'],
+            }) }}
+
+            {{ forms.colorField({
+                label: 'Text color'|t('top-bar-call-to-action'),
+                name: 'settings[colorTextBar]',
+                value: settings['colorTextBar'],
+            }) }}
+
+            {{ forms.colorField({
+                label: 'Button background color'|t('top-bar-call-to-action'),
+                name: 'settings[colorButton]',
+                value: settings['colorButton'],
+            }) }}
+
+            {{ forms.colorField({
+                label: 'Button text color'|t('top-bar-call-to-action'),
+                name: 'settings[colorTextButton]',
+                value: settings['colorTextButton'],
+            }) }}
+
+        </div>
+
+        <div id="sites" class="hidden">
+
+            <h1>Choose on which sites you would like to show your Top Bar CTA</h1>
+
+            <div class="top-bar__css-enable-toggle">
+                {{ forms.lightswitchField({                    
+                    onLabel: 'Custom sites'|t('top-bar-call-to-action'),
+                    id: 'settings[disableAllSites]',
+                    name: 'settings[disableAllSites]',
+                    on: settings['disableAllSites'] })
+                }}
+            </div>
+
+            {% set sites = craft.app.sites.getAllSites() %}        
+
+            <h2 class="mt-4">
+                Sites
+            </h2>    
+            
+            <table class="data fullwidth collapsible mt-2">
+                <thead>
+                     <tr>
+                        <th>ID</th>
+                        <th>Site name</th>
+                        <th>Enable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for site in sites %}
+
+                        {% set enable_lightswitch = false %}
+
+                        {% for activePage in activePages %}
+                            {% if site.id == activePage %}
+                                {% set enable_lightswitch = true %}
+                            {% endif %}
+                        {% endfor %}  
+
+                        <tr>
+                            <th>{{ site.id }}</th>
+                            <td>{{ site.name }}</td>
+                            <td>
+                                <div class="pages-lightswitch">
+                                    {{ forms.lightswitchField({
+                                        id: site.id,
+                                        value: site.id,
+                                        name: 'txtActivePages',
+                                        on: enable_lightswitch })
+                                    }}
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}          
+                </tbody>
+            </table>
+
+        </div>
+
+        <div id="advanced" class="hidden">
+
+            <div class="top-bar__css-enable-toggle">
+                {{ forms.lightswitchField({
+                    onLabel: 'Activate on mobile & tablet'|t('top-bar-call-to-action'),
+                    id: 'settings[enableOnMobile]',
+                    name: 'settings[enableOnMobile]',
+                    on: settings['enableOnMobile'] })
+                }}
+            </div>
+
+            <div class="top-bar__css-enable-toggle mt-2">
+                {{ forms.lightswitchField({
+                    onLabel: 'Enable sticky bar'|t('top-bar-call-to-action'),
+                    id: 'settings[stickyBar]',
+                    name: 'settings[stickyBar]',
+                    on: settings['stickyBar'] })
+                }}
+            </div>
+
+            <div class="top-bar__css-enable-toggle mt-2">
+                {{ forms.lightswitchField({
+                    onLabel: 'Custom CSS'|t('top-bar-call-to-action'),
+                    id: 'settings[enableCustomCSS]',
+                    name: 'settings[enableCustomCSS]',
+                    on: settings['enableCustomCSS'] })
+                }}
+            </div>
+
+            <div class="form-custom-css">
+                {{ forms.textareaField({
+                    instructions: 'Need extra customizable to fit your brand styling? Toggle Custom CSS'|t('top-bar-call-to-action'),
+                    id: 'settings[txtAreaCustomCSS]',
+                    name: 'settings[txtAreaCustomCSS]',
+                    max: 140,
+                    value: settings['txtAreaCustomCSS'],
+                    disabled: not settings['enableCustomCSS'],
+                    rows: 5,
+                }) }}
+            </div>
+
+            {{ forms.hidden({
+                id: 'activePages',
+                name: 'settings[txtActivePages]',
+                value: settings['txtActivePages'] })
+            }}
+
+        </div>
+
+
+        <div id="preview" class="hidden">
+
+            <h1>{{ "Top Bar Call to Action preview: "|t('top-bar-call-to-action') }}</h1>
+
+            <div class="top-bar top-bar__preview {{ settings['barType'] }}">
+
+                <p> {{ settings['txtBar'] }}</p>
+        
+                <a href="{{ settings['txtBtnLink'] }}">{{ settings['txtBtn'] }}</a>   
+
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn submit mt-5">Save Changes</button>
+
+    </form>
+    
+{% endset %}
+
+{# -------------------------------------- /Content ----------------------------------- #}
+
+
+{% js on ready %}
+
+
+    document.getElementById('settings[enableCustomCSS]').addEventListener('click', function() {
+        
+        if(this.getAttribute("aria-checked") === 'true' ){ 
+            document.getElementById('settings[txtAreaCustomCSS]').disabled = false;
+            document.getElementById('settings[txtAreaCustomCSS]').classList.remove("disabled");
+            
+        } else {
+            document.getElementById('settings[txtAreaCustomCSS]').disabled = true;
+            document.getElementById('settings[txtAreaCustomCSS]').classList.add("disabled");
+        }
+                    
+    });
+
+
+    var pages = [];
+
+    document.querySelectorAll('.pages-lightswitch .lightswitch-field button').forEach(function(element) {
+         
+        if(element.getAttribute("aria-checked") === 'true' ){                      
+            pages.push(element.id);
+        }
+
+        element.addEventListener('click', function() {
+                        
+            if(this.getAttribute("aria-checked") === 'true' ){     
+                pages.indexOf(this.id) === -1 ? pages.push(this.id) : console.log("This item already exists");
+            } else {
+
+                const index = pages.indexOf(this.id);
+                
+                if (index > -1) {
+                    pages.splice(index, 1);
+                }
+                            
+            }
+                        
+            document.getElementById("activePages").value = pages.toString();
+
+        });
+  
+    });           
+
+    document.getElementById("activePages").value = pages.toString();
+                
+{% endjs %}

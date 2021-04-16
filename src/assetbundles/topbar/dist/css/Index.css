@@ -1,0 +1,139 @@
+/**
+ * Top Bar Call To Action plugin for Craft CMS
+ *
+ * Top Bar Call To Action CSS
+ *
+ * @author    BRIX Plugins
+ * @copyright Copyright (c) 2021 BRIX Plugins
+ * @link      https://brixplugins.com/
+ * @package   TopBarCallToAction
+ * @since     1.0.0
+ */
+
+ .top-bar {
+   background-color: blue;
+   color: white;
+   font-weight: 600;
+   font-size: 20px;
+   line-height: 24px;
+   background: #2D7EFF;
+   box-shadow: 0px 3px 16px rgba(16, 60, 130, 0.24);
+}
+
+.bar-type-1 a {
+   display: none !important;
+}
+
+.bar-type-1 p, .bar-type-2 p {
+   margin: auto 0 !important;
+}
+
+.bar-type-1 {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 72px; 
+}
+
+.bar-type-2 {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 72px;
+}
+
+.bar-type-2 a {
+   margin-left: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.bar-type-3 {
+   height: auto;
+   padding: 10px 0 22px;
+   text-align: center;
+}
+
+.bar-type-3 p {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.bar-type-3 a {
+  margin: 14px auto 8px;
+}
+
+.top-bar p {
+  text-align: center;
+}
+
+.top-bar a {
+   background-color: white;
+   color: #2D7EFF;
+   font-weight: 600;
+   font-size: 16px;
+   border-radius: 114px;
+   text-decoration: none;
+   transition: .35s ease;
+   text-align: center;
+   padding: 12px 24px;
+}
+
+.top-bar a:hover {
+   transform: scale(1.03);
+   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+
+   .top-bar {
+      font-size: 16px;
+   }
+
+   .bar-type-1 p, .bar-type-3 p {
+      margin-left: 24px !important;
+      margin-right: 24px !important;
+   }
+
+   .top-bar a {
+      margin: 10px 24px 8px;
+      font-size: 15px;
+      padding: 10px 20px;
+   }
+
+   .bar-type-1 {
+      padding: 15px 0;
+      height: unset;
+   }
+
+   .bar-type-2 p {
+      margin-left: 24px !important;
+   }
+   
+}
+
+@media (max-width: 620px) {
+
+   .bar-type-2 p {
+      margin-right: 24px !important;
+   }
+
+   .bar-type-2, .bar-type-3 {
+      display: block;
+      text-align: center;
+      height: auto;
+      padding: 8px 0 5px;
+   }
+
+   .bar-type-3 p {
+      margin: auto 0 !important;
+   }
+
+   .bar-type-3 a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+}

@@ -1,0 +1,46 @@
+{
+    "name": "brixplugins/top-bar-call-to-action",
+    "description": "Get more clicks and leads with our easy to use Top Bar CTA.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "top bar call to action"
+    ],
+    "support": {
+        "docs": "https://brixplugins.com/plugins/top-bar-call-to-action",
+        "issues": "https://brixplugins.com/plugins/top-bar-call-to-action"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "BRIX Plugins",
+            "homepage": "https://brixplugins.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "brixplugins\\topbarcalltoaction\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Top Bar Call To Action",
+        "handle": "top-bar-call-to-action",
+        "developer": "BRIX Plugins",
+        "developerUrl": "https://brixplugins.com",
+        "documentationUrl": "https://brixplugins.com/plugins/top-bar-call-to-action",
+        "changelogUrl": "https://brixplugins.com/plugins/top-bar-call-to-action",
+        "class": "brixplugins\\topbarcalltoaction\\TopBarCallToAction"
+    }
+}
