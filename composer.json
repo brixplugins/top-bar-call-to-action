@@ -8,7 +8,12 @@
         "cms",
         "craftcms",
         "craft-plugin",
-        "top bar call to action"
+        "top bar call to action",
+        "bar",
+        "topbar",
+        "top bar",
+        "hellobar",
+        "hello bar"        
     ],
     "support": {
         "docs": "https://brixplugins.com/plugins/top-bar-call-to-action",
