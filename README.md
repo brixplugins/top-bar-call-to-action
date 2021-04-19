@@ -33,9 +33,6 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Top Bar Call To Action.
 
-## Top Bar Call To Action Overview
-
--Insert text here-
 
 ## Configuring Top Bar Call To Action
 
