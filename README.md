@@ -17,7 +17,7 @@ Want to promote an important company announcement through your site? Want to off
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 ## Installation
 
@@ -88,6 +88,8 @@ On the Advanced tab you will be able to toggle certain advanced settings for you
 ### Tab 5: Preview
 
 On the Preview tab you will be able to preview the top bar CTA without making it public on your website. This is very handy if you are trying multiple texts and button CTAs to find the best one before pushing it live.
+
+
 
 
 Brought to you by [BRIX Plugins](https://brixplugins.com/)
