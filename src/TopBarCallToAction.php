@@ -158,15 +158,6 @@ class TopBarCallToAction extends Plugin
     /**
      * @inheritdoc
      */
-    protected function settingsHtml(): string
-    {
-        return Craft::$app->view->renderTemplate(
-            'top-bar-call-to-action/settings',
-            [
-                'settings' => $this->getSettings()
-            ]
-        );
-    }
 
     public function getSettingsResponse()
     {
