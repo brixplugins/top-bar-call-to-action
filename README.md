@@ -51,7 +51,7 @@ If you click on it, it will drive you to the Top Bar CTA plugin settings page, w
 The tabs are the following, and we will cover all options inside each.
 
 
-# Tab 1: General
+### Tab 1: General
 
 On the general tab, you will be able to select your top bar CTA layout, as well as the text content and link for the button. The settings included are the following:
 
@@ -62,7 +62,7 @@ On the general tab, you will be able to select your top bar CTA layout, as well 
 - **Activate / Deactive Top Bar:** This toggle will allow you to enable or disable the top bar as needed.
 - **Save Changes:** Once you are finished with choosing the layout and adding the text, just click Save Changes and it will be updated sitewide.
 
-# Tab 2: Styling
+### Tab 2: Styling
 
 On the styling tab you will be able to choose the colors of your Top Bar CTA, to ensure these match your brand styling.
 
@@ -71,21 +71,21 @@ On the styling tab you will be able to choose the colors of your Top Bar CTA, to
 - **Button Text Color:** Use this setting to choose the text color of your top bar call to action button text.
 - **Text Color:** Use this setting to choose the color of your top bar call to action text.
 
-# Tab 3: Sites
+### Tab 3: Sites
 
 On the Sites tab you will be able to select on which sites you would like to apply your Top Bar CTA.
 
 Click on the toggle at the right of each of the sites, and it will automatically enable the top bar on that particular site.
 
 
-# Tab 4: Advanced
+### Tab 4: Advanced
 On the Advanced tab you will be able to toggle certain advanced settings for your top bar CTA.
 
 - **Activate on Mobile & Table:** This will enable or disable the top bar CTA on mobile and tablet devices.
 - **Custom CSS:** Use this setting to enable the Custom CSS field for your top bar CTA. With this field, you will be able to add any CSS needed to make your top bar CTA look exactly as you want it.
 
 
-# Tab 5: Preview
+### Tab 5: Preview
 
 On the Preview tab you will be able to preview the top bar CTA without making it public on your website. This is very handy if you are trying multiple texts and button CTAs to find the best one before pushing it live.
 
