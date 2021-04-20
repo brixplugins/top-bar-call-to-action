@@ -58,6 +58,12 @@
     padding: 42px 60px;     
  }
 
+ .instructions a {
+   color: #596673;
+   pointer-events: none;
+   cursor: text;
+ }
+
  .developer-description {
     font-style: normal;
     font-weight: normal;
